@@ -1,0 +1,35 @@
+<app-header></app-header>
+<h3>Add New Book Details</h3>
+<form #addform="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="example1" class="form-label">Book Title</label>
+        <input type="text" class="form-control" #title="ngModel" name="book_title" [(ngModel)]="data.book_title"
+ required>
+
+    </div>
+    <div class="form-group">
+        <label for="example3" class="form-label">Author</label>
+        <input type="text" class="form-control"  name="author" [(ngModel)]="data.author" required>
+
+    </div>
+    <div class="form-group">
+        <label for="example3" class="form-label">Publisher</label>
+        <input type="text" class="form-control" name="publisher"  [(ngModel)]="data.publisher" required>
+
+    </div>
+    <div class="form-group">
+        <label for="example4" class="form-label">Price</label>
+        <input type="number" class="form-control" name="price"  [(ngModel)]="data.price" required>
+
+    </div>
+    <div class="form-group">
+        <label for="example5" class="form-label">Content</label>
+        <input type="text" class="form-control" name="content"  [(ngModel)]="data.content" required>
+
+    </div>
+    <div class="add" style="text-align:center">
+        <button type="submit"  class="btn btn-link">Add</button>
+        <button type="reset" class="btn btn-warning m-2 ">Clear</button>
+    </div>
+
+</form>

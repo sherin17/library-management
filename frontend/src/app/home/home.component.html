@@ -1,0 +1,99 @@
+<app-header></app-header>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-lg-8 col-sm-8">
+        <h4>"As you read a book word by word and page by page, you participate
+          in its creation, just as a cellist playing a Bach suite participates,
+          note by note, in the creation, the coming-to-be, the existence, of
+          the music. And, as you read and re-read, the book of course participates
+          in the creation of you, your thoughts and feelings, the size and temper
+          of your soul." – Ursula K. Le Guin
+        </h4>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-4">
+        <form class="login" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" formControlName="emailid" >
+           
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control"formControlName="passwords">
+             
+          </div>
+          <div class="anchor">
+            <button type="submit" class="btn btn-light m-2" [disabled]="loginForm.invalid">Login</button>
+            <h6>Don't have an account?
+              <button type="button" class="btn btn-light ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                SignUp
+              </button>
+            </h6>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #signupForm="ngForm" (ngSubmit)="signup()">
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label">Name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="usersignup.name"
+              [class.is-invalid]="name.invalid && name.touched"  #name="ngModel"  required>
+              <small class="text-danger" [class.d-none]="name.valid||name.touched">Required Field</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="usersignup.email"
+              [class.is-invalid]="email.invalid && email.touched" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+               <small class="text-danger" [class.d-none]="email.valid||email.touched">Enter Invalid Email ID</small>
+              
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+              <input type="number" class="form-control" name="phone" #phone="ngModel" [(ngModel)]="usersignup.phone" 
+              [class.is-invalid]="phone.invalid && phone.touched" required pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$">
+              <small class="text-danger" [class.d-none]="phone.valid||phone.touched">Enter Invalid Phone Number</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password"  #password="ngModel" 
+            [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="usersignup.password" required minlength="8">
+            <small class="text-danger" [class.d-none]="password.valid||password.touched">Enter Invalid Password</small>
+            </div>
+            <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="signupForm.form.invalid">SignUp</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+
+
